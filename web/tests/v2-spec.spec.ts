@@ -163,13 +163,18 @@ for (const r of routes) {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(r.path);
     const cards = page.locator('.rebrands > article');
-    await expect(cards).toHaveCount(4);
+    await expect(cards).toHaveCount(5);
     const boxes = await cards.evaluateAll((els) => els.map((e) => { const b = e.getBoundingClientRect(); return { x: Math.round(b.x), y: Math.round(b.y + scrollY), w: Math.round(b.width), h: Math.round(b.height) }; }));
     expect(boxes[0].x).toBe(boxes[2].x);
     expect(boxes[1].x).toBeGreaterThan(boxes[0].x);
     expect(boxes[0].y).toBe(boxes[1].y);
     expect(boxes[2].y).toBeGreaterThan(boxes[0].y);
     expect(boxes[0].w).toBe(boxes[1].w);
+    // odd last card: same width, centered on its own row
+    const last = boxes[4];
+    expect(last.y).toBeGreaterThan(boxes[2].y);
+    expect(last.w).toBe(boxes[0].w);
+    expect(Math.abs(last.x + last.w / 2 - (boxes[0].x + boxes[1].x + boxes[1].w) / 2)).toBeLessThanOrEqual(2);
     expect(await page.locator('.rb .shot').first().evaluate((e) => e.getBoundingClientRect().height)).toBeCloseTo(380, 0);
     expect(await page.locator('.rb .meta span:nth-child(2)').count()).toBe(0);
     await page.setViewportSize({ width: 390, height: 900 });

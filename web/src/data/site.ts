@@ -41,6 +41,7 @@ export const REBRANDS = [
   { id: 'local402', img: 'img/covers/local402.jpg', url: LINKS.local402 },
   { id: 'arcus', img: 'img/covers/arcus.jpg', url: LINKS.arcus as string | null },
   { id: 'caupolicana', img: 'img/covers/caupolicana.jpg', url: LINKS.caupolicana },
+  { id: 'kedgeway', img: 'img/covers/kedgeway.jpg', url: LINKS.kedgeway },
 ];
 
 /** Project website per VHS tape (null = no public link). */

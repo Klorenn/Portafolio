@@ -173,6 +173,11 @@ export const en: Copy = {
         desc: 'A C-and-bee isotype, earth and green palette, editorial type and a redesigned Instagram account. Recognized by UA as the best advisory group.',
         part: 'My role · Rebrand and Instagram', alt: 'Caupolicana logo: the C and bee in three tones',
       },
+      kedgeway: {
+        meta2: 'kedgeway.vercel.app', title: 'Diagnosis for the Stellar toolchain',
+        desc: 'A galloping-horse symbol, a monochrome system with technical type, an ASCII horse and the social pieces.',
+        part: 'My role · Brand, web and social pieces', alt: 'Kedgeway social piece: Your Soroban SDK is drifting',
+      },
     },
   },
   vhs: {

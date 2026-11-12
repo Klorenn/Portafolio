@@ -173,6 +173,11 @@ export const es: Copy = {
         desc: 'Isotipo de la C con abeja, paleta tierra y verde, tipografía editorial y la cuenta de Instagram rediseñada. Reconocido por la UA como mejor grupo de asesoría.',
         part: 'Mi aporte · Rebranding e Instagram', alt: 'Logo de Caupolicana: la C con la abeja en tres tonos',
       },
+      kedgeway: {
+        meta2: 'kedgeway.vercel.app', title: 'Diagnóstico para el toolchain de Stellar',
+        desc: 'Isotipo de caballo al galope, sistema monocromo con tipografía técnica, un caballo hecho en ASCII y las piezas sociales.',
+        part: 'Mi aporte · Marca, web y piezas sociales', alt: 'Pieza social de Kedgeway: Your Soroban SDK is drifting',
+      },
     },
   },
   vhs: {

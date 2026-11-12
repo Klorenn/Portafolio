@@ -595,3 +595,6 @@ body.menu-open .to-top { display: none; }
   .apager button { min-width: 36px; height: 36px; padding: 0 6px; margin-inline: 2px; }
   .acard .body { padding: 16px; }
 }
+
+/* odd last brand card centered on its own row (desktop 2-col grid) */
+@media (min-width: 761px) { .rebrands > article:last-of-type:nth-of-type(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - 28px) / 2); } }
