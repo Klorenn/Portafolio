@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Kl0ren — Portafolio</title>
+<style>
+  :root{
+    --bg:#141414; --surface:#1C1C1C; --line:#2E2E2E;
+    --text:#F5F5F0; --muted:#A3A3A3;
+    --lime:#E8F542; --lav:#A78BFA; --lav-d:#6D4FD6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1440px;overflow:hidden;background:var(--bg);color:var(--text);font-family:"Space Grotesk",sans-serif}
+  .display{font-family:"Dela Gothic One",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:-1px}
+  .mono{font-family:"Space Mono",monospace}
+  a{color:inherit;text-decoration:none}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 8px 0 22px;border-radius:999px;font-size:16px;font-weight:700;border:2px solid var(--text)}
+  .btn .arrow{width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center}
+  .btn-lime{background:var(--lime);color:var(--bg);border-color:var(--bg);box-shadow:4px 4px 0 var(--text)}
+  .btn-lime .arrow{background:var(--bg)}
+  .btn-ghost{background:var(--surface);color:var(--text);border-color:var(--line)}
+  .btn-ghost .arrow{background:var(--text)}
+
+  nav{height:88px;padding:0 64px;display:flex;align-items:center;justify-content:space-between}
+  .nav-links{display:flex;gap:36px;font-size:15px;font-weight:500;width:420px}
+  .nav-right{justify-content:flex-end;align-items:center}
+  .logo{display:flex;align-items:center;gap:10px;font-size:22px}
+  .logo .mark{width:28px;height:28px;background:var(--lime);border:2px solid var(--text);transform:rotate(12deg)}
+
+  .hero{padding:56px 64px 0;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .badge{display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13px}
+  .badge b{background:var(--lime);color:var(--bg);border-radius:999px;padding:3px 10px;font-size:12px}
+  h1{font-size:152px;line-height:.95;margin-top:28px}
+  h1 .zero{color:var(--lime)}
+  .sub{margin-top:28px;font-size:20px;line-height:1.5;color:var(--text);max-width:640px}
+  .sub span{color:var(--muted)}
+  .ctas{display:flex;gap:16px;margin-top:36px}
+
+  .stage{position:relative;margin:64px 64px 0;height:640px;border:1px solid var(--line);border-radius:24px;background:#171717;overflow:hidden}
+  .stage .shape{position:absolute;left:390px;top:40px}
+  .photo{position:absolute;left:520px;top:150px;width:400px;height:490px;border:2px dashed var(--lime);border-radius:200px 200px 0 0;background:rgba(20,20,20,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center}
+  .photo .t{font-size:22px}
+  .photo .s{font-size:13px;color:var(--muted)}
+  .sparks-l{position:absolute;left:150px;top:150px}
+  .sparks-r{position:absolute;left:960px;top:210px}
+  .tag{position:absolute;white-space:nowrap;padding:10px 16px;border-radius:999px;font-weight:700;font-size:15px;border:2px solid var(--bg)}
+  .tag1{left:120px;top:440px;background:var(--lime);color:var(--bg);transform:rotate(-6deg);box-shadow:4px 4px 0 var(--text)}
+  .tag2{left:1040px;top:470px;background:var(--lav);color:var(--bg);transform:rotate(5deg);box-shadow:4px 4px 0 var(--text)}
+  .tag3{left:1080px;top:90px;background:var(--text);color:var(--bg);transform:rotate(-4deg)}
+
+  .marquee{margin-top:96px;background:var(--lime);color:var(--bg);border-top:2px solid var(--text);border-bottom:2px solid var(--text);height:76px;display:flex;align-items:center;gap:36px;white-space:nowrap;overflow:hidden;transform:rotate(-1.5deg);width:1500px;margin-left:-30px}
+  .marquee span{font-size:30px}
+
+  .pillars{display:flex;margin:110px 64px 0}
+  .pillar{flex:1;padding:0 48px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .pillar + .pillar{border-left:1px solid var(--line)}
+  .pillar .num{font-size:14px;color:var(--lime)}
+  .pillar h3{font-size:58px;font-weight:500;letter-spacing:-1.5px;line-height:1}
+  .pillar p{font-size:16px;line-height:1.55;color:var(--muted);max-width:300px}
+
+  .head{margin:150px 64px 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+  .eyebrow{font-size:14px;color:var(--lime);letter-spacing:2px;text-transform:uppercase}
+  .head h2{font-size:68px;font-weight:500;letter-spacing:-2px;line-height:1.02;max-width:900px}
+  .head p{font-size:18px;color:var(--muted);max-width:560px;line-height:1.5}
+
+  .projects{display:flex;flex-direction:column;gap:28px;margin:64px 64px 0}
+  .proj{display:flex;border:2px solid var(--text);border-radius:28px;overflow:hidden;background:var(--surface);box-shadow:8px 8px 0 var(--lime);height:420px}
+  .proj.alt{box-shadow:8px 8px 0 var(--lav)}
+  .proj .info{width:620px;padding:44px 48px;display:flex;flex-direction:column;gap:18px}
+  .proj .row{display:flex;justify-content:space-between;align-items:center}
+  .proj .idx{font-size:14px;color:var(--muted)}
+  .chip{font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--text)}
+  .chip.live{background:var(--lime);color:var(--bg);border-color:var(--lime);font-weight:700}
+  .proj h3{font-size:64px;line-height:1}
+  .proj .what{font-size:19px;line-height:1.45}
+  .proj .stats{display:flex;gap:28px;margin-top:auto}
+  .stat b{display:block;font-size:30px;font-weight:700;color:var(--lime)}
+  .stat span{font-size:13px;color:var(--muted)}
+  .proj .chips{display:flex;gap:8px}
+  .proj .visual{flex:1;border-left:2px solid var(--text);position:relative;display:flex;align-items:center;justify-content:center}
+  .v-loot{background:var(--lav)}
+  .v-nurea{background:#E9E6DD}
+  .v-tirly{background:var(--lime)}
+  .mock{width:460px;height:290px;border:2px solid var(--bg);border-radius:18px;background:var(--bg);box-shadow:10px 10px 0 var(--bg);padding:22px;display:flex;flex-direction:column;gap:14px;color:var(--text)}
+  .mock .bar{display:flex;gap:6px}
+  .mock .bar i{width:10px;height:10px;border-radius:99px;background:var(--line);display:block}
+  .mock .big{font-size:34px;line-height:1.05}
+  .mock .lines{display:flex;flex-direction:column;gap:8px}
+  .mock .lines i{display:block;height:10px;border-radius:6px;background:var(--line)}
+  .mock .pill{align-self:flex-start;background:var(--lime);color:var(--bg);font-weight:700;font-size:13px;padding:8px 14px;border-radius:999px}
+
+  .bento{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:240px 240px;gap:20px;margin:64px 64px 0}
+  .cell{border:1px solid var(--line);border-radius:24px;background:var(--surface);padding:32px;display:flex;flex-direction:column;justify-content:space-between}
+  .cell.big{grid-row:span 2;background:var(--lav);color:var(--bg);border:2px solid var(--text)}
+  .cell.big h4{font-size:52px;line-height:1}
+  .cell.lime{background:var(--lime);color:var(--bg);border:2px solid var(--text)}
+  .cell .k{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;opacity:.8}
+  .cell h4{font-size:30px;font-weight:700;line-height:1.1}
+  .cell p{font-size:15px;line-height:1.5}
+  .cell .n{font-size:56px;line-height:1}
+
+  .contact{margin:150px 64px 0;border:2px solid var(--text);border-radius:36px;background:var(--lime);color:var(--bg);padding:80px 64px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;box-shadow:10px 10px 0 var(--lav)}
+  .contact .eyebrow{color:var(--bg)}
+  .contact h2{font-size:140px;line-height:.92}
+  .contact p{font-size:20px;max-width:620px;line-height:1.45}
+  .contact .btn-lime{background:var(--bg);color:var(--lime);border-color:var(--bg);box-shadow:4px 4px 0 var(--lav)}
+  .contact .btn-lime .arrow{background:var(--lime)}
+  .socials{display:flex;gap:12px;margin-top:8px}
+  .social{border:2px solid var(--bg);border-radius:999px;padding:10px 18px;font-size:15px;font-weight:700}
+
+  footer{margin:72px 64px 0;padding:28px 0 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-links"><a>Inicio</a><a>Proyectos</a><a>Comunidad</a><a>Sobre mí</a></div>
+  <div class="logo display"><div class="mark"></div>KL0REN</div>
+  <div class="nav-links nav-right" style="gap:28px">
+    <a>Blog</a><a>Contacto</a>
+    <a class="btn btn-lime" style="height:42px">Hablemos <span class="arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#E8F542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge"><b>Nuevo</b> Tellus Blockchain Hub ya abrió en Santiago <span style="color:#A3A3A3">→</span></div>
+  <h1 class="display">Hola, soy<br>Kl<span class="zero">0</span>ren</h1>
+  <p class="sub">Cuento tecnología para que se entienda. <span>Comunidad, contenido y código en Web3 e IA desde LatAm — sin humo.</span></p>
+  <div class="ctas">
+    <a class="btn btn-lime">Hablemos <span class="arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#E8F542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    <a class="btn btn-ghost">Ver proyectos <span class="arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  </div>
+</section>
+
+<div class="stage">
+  <svg class="shape" width="640" height="620" viewBox="0 0 640 620" fill="none">
+    <path d="M150 600 L190 470 L120 380 L200 300 L140 200 L250 150 L240 50 L360 90 L470 20 L470 140 L590 170 L520 270 L600 360 L520 420 L560 600 Z" fill="#E8F542"/>
+    <path d="M178 600 L214 472 L150 384 L226 306 L172 212 L272 168 L264 82 L364 116 L450 60 L448 160 L556 186 L494 272 L566 356 L494 410 L530 600 Z" fill="#A78BFA"/>
+  </svg>
+  <div class="photo">
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#E8F542" stroke-width="1.6"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="#E8F542" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <div class="t display">Tu foto aquí</div>
+    <div class="s mono">PNG recortado · fondo transparente<br>cintura hacia arriba</div>
+  </div>
+  <svg class="sparks-l" width="260" height="220" viewBox="0 0 260 220" fill="none">
+    <path d="M230 120 L20 70" stroke="#E8F542" stroke-width="4" stroke-linecap="round"/>
+    <path d="M240 90 L90 10" stroke="#E8F542" stroke-width="4" stroke-linecap="round"/>
+    <path d="M232 150 L60 200" stroke="#E8F542" stroke-width="4" stroke-linecap="round"/>
+    <path d="M250 60 L190 0" stroke="#E8F542" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <svg class="sparks-r" width="140" height="200" viewBox="0 0 140 200" fill="none">
+    <path d="M20 10 L10 90 L60 150" stroke="#E8F542" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M60 30 L50 90 L90 120" stroke="#E8F542" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M120 20 L110 60" stroke="#E8F542" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <div class="tag tag1">Community Manager ✦</div>
+  <div class="tag tag2">Builder en Stellar</div>
+  <div class="tag tag3 mono">Periodista · Santiago, CL</div>
+</div>
+
+<div style="width:1440px;overflow:hidden;padding:20px 0"><div class="marquee display">
+  <span>Comunidad</span><span>✦</span><span>Contenido</span><span>✦</span><span>Código</span><span>✦</span><span>Stellar</span><span>✦</span><span>Web3</span><span>✦</span><span>IA</span><span>✦</span><span>LatAm</span><span>✦</span><span>Comunidad</span><span>✦</span><span>Contenido</span>
+</div></div>
+
+<section class="pillars">
+  <div class="pillar"><div class="num mono">01</div><h3>Comunidad</h3><p>Desde 2022 llevo la comunidad de Tellus Cooperative y coorganizo Stellar Chile.</p></div>
+  <div class="pillar"><div class="num mono">02</div><h3>Contenido</h3><p>Periodismo aplicado a tecnología: claro, cercano y con datos.</p></div>
+  <div class="pillar"><div class="num mono">03</div><h3>Código</h3><p>Construyo productos reales en Stellar y Soroban, de la idea al deploy.</p></div>
+</section>
+
+<section class="head">
+  <div class="eyebrow mono">Proyectos destacados</div>
+  <h2>No solo lo cuento.<br>También lo construyo.</h2>
+  <p>Tres productos en producción que mezclan comunidad, criptografía y salud.</p>
+</section>
+
+<section class="projects">
+  <article class="proj">
+    <div class="info">
+      <div class="row"><span class="idx mono">01 / 03</span><span class="chip live">● Live en mainnet</span></div>
+      <h3 class="display">Loot</h3>
+      <p class="what">Cofres-acertijo con premios en XLM. Quien resuelve lo prueba con zero-knowledge atado a su dirección: los bots no pueden copiar la respuesta.</p>
+      <div class="chips"><span class="chip">Soroban</span><span class="chip">Circom · ZK</span><span class="chip">SDK npm</span></div>
+      <div class="stats"><div class="stat"><b>ZK</b><span>Groth16 · BN254</span></div><div class="stat"><b>SDK</b><span>@findloot/sdk</span></div><div class="stat"><b>↗</b><span>findloot.xyz</span></div></div>
+    </div>
+    <div class="visual v-loot">
+      <div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="big display">Puzzle chests<br>bots can't rob</div><div class="lines"><i style="width:90%"></i><i style="width:70%"></i></div><span class="pill">Abrir cofre →</span></div>
+    </div>
+  </article>
+
+  <article class="proj alt">
+    <div class="info">
+      <div class="row"><span class="idx mono">02 / 03</span><span class="chip live">● Fundador</span></div>
+      <h3 class="display">Nurea</h3>
+      <p class="what">Telemedicina para Chile: profesionales de la salud verificados, videollamada en el navegador y pago seguro con escrow en Stellar.</p>
+      <div class="chips"><span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Escrow Stellar</span></div>
+      <div class="stats"><div class="stat"><b>Salud</b><span>profesionales verificados</span></div><div class="stat"><b>Video</b><span>consultas en vivo</span></div><div class="stat"><b>↗</b><span>nurea.app</span></div></div>
+    </div>
+    <div class="visual v-nurea">
+      <div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="big display">Tu salud,<br>sin vueltas</div><div class="lines"><i style="width:80%"></i><i style="width:60%"></i></div><span class="pill">Agendar consulta →</span></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="info">
+      <div class="row"><span class="idx mono">03 / 03</span><span class="chip live">● 7 comunidades</span></div>
+      <h3 class="display">Tirly</h3>
+      <p class="what">Bot de Discord gratis que convierte lo que juega tu comunidad en game nights, XP y badges verificables en Stellar.</p>
+      <div class="chips"><span class="chip">Discord</span><span class="chip">Stellar</span><span class="chip">Spotify stats</span></div>
+      <div class="stats"><div class="stat"><b>1.706</b><span>sesiones</span></div><div class="stat"><b>72.923</b><span>minutos</span></div><div class="stat"><b>144</b><span>juegos</span></div></div>
+    </div>
+    <div class="visual v-tirly">
+      <div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="big display">Your server<br>already plays</div><div class="lines"><i style="width:85%"></i><i style="width:55%"></i></div><span class="pill">Add to Discord →</span></div>
+    </div>
+  </article>
+</section>
+
+<section class="head">
+  <div class="eyebrow mono">Comunidad y eventos</div>
+  <h2>Donde la gente aprende<br>a construir sin humo</h2>
+</section>
+
+<section class="bento">
+  <div class="cell big">
+    <span class="k mono">Tellus Cooperative · desde 2022</span>
+    <div><h4 class="display">Community Manager &amp; VP</h4><p style="margin-top:16px;font-size:17px">Contenido, eventos y el Tellus Blockchain Hub: un espacio en Providencia para aprender Stellar, IA y Web3.</p></div>
+  </div>
+  <div class="cell lime"><span class="k mono">Coorganizador</span><h4>Stellar Chile</h4></div>
+  <div class="cell"><span class="k mono" style="color:#E8F542">Hub</span><div><div class="n display">Triana 861</div><p style="color:#A3A3A3;margin-top:8px">Providencia, Santiago</p></div></div>
+  <div class="cell"><span class="k mono" style="color:#E8F542">Contenido</span><h4>“Web3 sin humo: 6 pasos para empezar”</h4></div>
+  <div class="cell"><span class="k mono" style="color:#E8F542">Formación</span><h4>Periodismo · Universidad Autónoma de Chile</h4></div>
+</section>
+
+<section class="contact">
+  <div class="eyebrow mono">Contacto</div>
+  <h2 class="display">¿Hablamos?</h2>
+  <p>Si te interesa la comunidad, los eventos o la educación en blockchain e IA en LatAm, escríbeme.</p>
+  <div class="ctas">
+    <a class="btn btn-lime">Escríbeme un mail <span class="arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  </div>
+  <div class="socials"><span class="social">X · @kl0ren</span><span class="social">LinkedIn · /in/kloren</span><span class="social">GitHub · Klorenn</span></div>
+</section>
+
+<footer><span>© 2026 Pau Andreu Koh Cuende — Kl0ren</span><span class="mono">Hecho en Chile con Stellar ✦</span></footer>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+---
+import '@fontsource/pixelify-sans/600.css';
+import '@fontsource/pixelify-sans/700.css';
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/700.css';
+import '../styles/global.css';
+import type { Copy } from '../i18n/types';
+import { url } from '../data/site';
+
+interface Props { copy: Copy; path: string; noindex?: boolean; alt?: { es: string; en: string } }
+const { copy, path, noindex = false, alt } = Astro.props;
+const canonical = new URL(url(path), Astro.site).href;
+const esHref = new URL(alt?.es ?? url('/'), Astro.site).href;
+const enHref = new URL(alt?.en ?? url('/en/'), Astro.site).href;
+const og = new URL(url('og.png'), Astro.site).href;
+---
+<!doctype html>
+<html lang={copy.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{copy.meta.title}</title>
+    <meta name="description" content={copy.meta.description} />
+    <meta name="theme-color" content="#141414" />
+    <meta name="color-scheme" content="dark" />
+    <script is:inline>document.documentElement.classList.add('js')</script>
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="alternate" hreflang="es" href={esHref} />}
+    {!noindex && <link rel="alternate" hreflang="en" href={enHref} />}
+    <link rel="icon" href={url('favicon.ico')} sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href={url('favicon/favicon-32.png')} />
+    <link rel="icon" type="image/png" sizes="16x16" href={url('favicon/favicon-16.png')} />
+    <link rel="icon" type="image/png" sizes="48x48" href={url('favicon/favicon-48.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={url('favicon/apple-touch-icon.png')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kl0ren" />
+    <meta property="og:title" content={copy.meta.title} />
+    <meta property="og:description" content={copy.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={copy.meta.ogAlt} />
+    <meta property="og:locale" content={copy.lang === 'es' ? 'es_CL' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={copy.meta.title} />
+    <meta name="twitter:description" content={copy.meta.description} />
+    <meta name="twitter:image" content={og} />
+    <meta name="twitter:image:alt" content={copy.meta.ogAlt} />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { initFx } from '../scripts/fx';
+      initFx();
+    </script>
+  </body>
+</html>

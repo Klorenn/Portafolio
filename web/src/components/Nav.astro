@@ -1,0 +1,77 @@
+---
+import type { Copy } from '../i18n/types';
+import { ARCHIVE, LINKS, SECTIONS, url } from '../data/site';
+import Icon from './Icon.astro';
+
+interface Props { copy: Copy; home?: boolean; archive?: boolean; langHrefs?: { es: string; en: string } }
+const { copy, home = true, archive = false, langHrefs } = Astro.props;
+const labels = [copy.nav.home, copy.nav.about, copy.nav.work, copy.nav.featured, copy.nav.contact];
+const es = langHrefs?.es ?? url('/'); const en = langHrefs?.en ?? url('/en/');
+const root = url(copy.lang === 'es' ? '/' : '/en/');
+const artHref = url(ARCHIVE[copy.lang]);
+const prefix = home ? '' : root;
+const links = SECTIONS.map((id, i) => ({ id, href: `${prefix}#${id}`, label: labels[i] }));
+const homeHref = root;
+const mitems = [...links.slice(0, 3), { id: 'articles', href: artHref, label: copy.nav.articles, art: true }, ...links.slice(3)];
+const artCurrent = archive ? 'page' : undefined;
+---
+<a class="skip" href="#main">{copy.skip}</a>
+<nav class="site-nav" aria-label={copy.nav.menu}>
+  <div class="nav-in">
+    <a class="logo" href={homeHref} aria-label="KL0REN"><img src={url('img/logo-icon.png')} width="32" height="32" alt="" /><span>KL0REN</span></a>
+    <div class="nmid">
+    <div class="nlinks">
+      {links.map((l, i) => (
+        <>
+          <a href={l.href} data-section={l.id}>{l.label}</a>
+          {i === 2 && <a class="nart" href={artHref} aria-current={artCurrent}>{copy.nav.articles}</a>}
+        </>
+      ))}
+    </div>
+    </div>
+    <div class="nav-r">
+      <div class="lng" aria-label={copy.nav.langName}>
+        <a href={es} hreflang="es" lang="es" aria-current={copy.lang === 'es' ? 'true' : undefined} data-lang>ES</a><i>/</i>
+        <a href={en} hreflang="en" lang="en" aria-current={copy.lang === 'en' ? 'true' : undefined} data-lang>EN</a>
+      </div>
+      <a class="ncta" href={LINKS.email}>{copy.nav.cta}</a>
+      <button class="burger" type="button" aria-label={copy.nav.burger} aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+  <span class="nav-prog" aria-hidden="true"></span>
+</nav>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label={copy.nav.menu} hidden>
+  <div class="menu-top">
+    <a class="logo" href={homeHref} aria-label="KL0REN"><img src={url('img/logo-icon.png')} width="28" height="28" alt="" /><span>KL0REN</span></a>
+    <div class="nav-r">
+      <div class="lng" aria-label={copy.nav.langName}>
+        <a href={es} hreflang="es" lang="es" aria-current={copy.lang === 'es' ? 'true' : undefined} data-lang>ES</a><i>/</i>
+        <a href={en} hreflang="en" lang="en" aria-current={copy.lang === 'en' ? 'true' : undefined} data-lang>EN</a>
+      </div>
+      <button class="menu-close" type="button" aria-label={copy.nav.close}>X</button>
+    </div>
+  </div>
+  <div class="menu-body">
+    <ol class="mlist">
+      {mitems.map((l, i) => (
+        <li><a href={l.href} data-section={l.art ? undefined : l.id} aria-current={l.art ? artCurrent : undefined}><span class="n">{String(i + 1).padStart(2, '0')}</span><span class="cur" aria-hidden="true">&gt;</span>{l.label}</a></li>
+      ))}
+    </ol>
+    <div class="maside">
+      <div class="soc">
+        <a class="gs" href={LINKS.email} aria-label={copy.footer.contactCards[0].k}><Icon name="mail" /></a>
+        <a class="gs" href={LINKS.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" /></a>
+        <a class="gs" href={LINKS.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+        <a class="gs" href={LINKS.x} target="_blank" rel="noopener" aria-label="X"><Icon name="x" /></a>
+      </div>
+      <a class="btn btn-lime" href={LINKS.email}>{copy.footer.cta}</a>
+    </div>
+    <img class="msp" src={url('img/anim/mp-camera.gif')} width="108" height="150" alt="" loading="lazy" />
+  </div>
+</div>
+
+<script>
+  import { initNav } from '../scripts/nav';
+  initNav();
+</script>

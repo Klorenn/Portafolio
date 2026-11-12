@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import { es } from '../i18n/es';
+import { en } from '../i18n/en';
+import { url } from '../data/site';
+const c = es.e404;
+const e = en.e404;
+---
+<Base copy={{ ...es, meta: { ...es.meta, title: `${c.code} · ${c.title}` } }} path="/404.html" noindex>
+  <Nav copy={es} home={false} />
+  <main id="main" class="e404">
+    <img class="fl" src={url('img/anim/o-qblock.gif')} width="96" height="107" alt="" style="left:15%;top:200px;width:96px" />
+    <img class="fl" src={url('img/anim/o-qblock.gif')} width="68" height="76" alt="" style="right:15%;top:430px;width:68px" />
+    <img class="fl" src={url('img/anim/o-vhs.gif')} width="120" height="96" alt="" style="right:12%;top:170px;width:120px" />
+    <div class="mid">
+      <div class="scene">
+        <img src={url('img/anim/o-tv.gif')} width="210" height="220" style="width:clamp(130px,15vw,210px);height:auto" alt="" />
+        <img src={url('img/anim/mp-gamer.gif')} width="130" height="181" style="width:clamp(80px,9vw,130px);height:auto" alt="" />
+      </div>
+      <div class="code" aria-hidden="true">{c.code}</div>
+      <h1 class="display" style="text-transform:none">{c.title}</h1>
+      <p lang="es">{c.text}</p>
+      <p lang="en" style="margin-top:6px;font-size:15px"><b style="color:var(--text)">{e.title}.</b> {e.text}</p>
+      <a class="btn btn-lime" href={url('/')}>{c.back}</a>
+    </div>
+    <div class="bands" aria-hidden="true"></div>
+  </main>
+</Base>

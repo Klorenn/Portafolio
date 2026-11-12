@@ -1,0 +1,56 @@
+---
+import type { Copy } from '../i18n/types';
+import { url } from '../data/site';
+import SectionHead from './SectionHead.astro';
+interface Props { copy: Copy }
+const { copy } = Astro.props;
+const a = copy.about;
+const stellar = `url(${url('img/stack/stellar.svg')})`;
+---
+<section class="sec wrap" id="about" aria-labelledby="about-t">
+  <div class="sr-only" id="about-t">{copy.nav.about}</div>
+  <SectionHead h2={a.h2} lead={a.lead} />
+  <div class="about">
+    <div class="portrait-col">
+      <img class="mp-peek pix" src={url('img/anim/mp-peek.gif')} width="216" height="204" alt="" loading="lazy" />
+      <div class="portrait">
+        <span class="sticker mono">{a.sticker}</span>
+        <img class="cut" src={url('img/pau-cut.png')} width="898" height="1116" alt={a.photoAlt} loading="lazy" />
+      </div>
+    </div>
+    <div class="about-r">
+      <p class="bio">{a.bioPre}<em>{a.bioEm}</em>{a.bioPost}</p>
+      <p class="bio-sub">{a.bioSub}</p>
+      <div class="about-grid">
+        <div class="box"><span class="k mono">{a.areas.k}</span><p class="plain">{a.areas.v}</p></div>
+        <div class="box"><span class="k mono">{a.skills.k}</span><p class="plain">{a.skills.v}</p></div>
+        <div class="box">
+          <span class="k mono">{a.awardsK}</span>
+          {a.awards.map((w) => (
+            <div class="award">
+              <div class={`n ${w.color === 'lav' ? 'lav' : w.color === 'stellar' ? 'stellar' : w.color === 'orange' ? 'orange' : w.color === 'ua' ? 'stellar ua' : ''}`} aria-hidden={w.color === 'stellar' || w.color === 'ua' ? 'true' : undefined}>
+                {w.color === 'stellar' ? <span class="ic" style={`--i:${stellar}`}></span> : w.color === 'ua' ? <img class="ua-ic" src={url('img/ua-shield.png')} width="28" height="36" alt="" /> : w.n}
+              </div>
+              <div><b>{w.title}</b><span class="s">{w.sub}</span></div>
+            </div>
+          ))}
+        </div>
+        <div class="box">
+          <span class="k mono">{a.hobbiesK}</span>
+          <ul class="hob">{a.hobbies.map((h) => <li set:html={h} />)}</ul>
+        </div>
+        <div class="box stack">
+          <span class="k mono">{a.stackK}</span>
+          <ul class="stks">
+            {copy.stack.map((s) => (
+              <li class="stk">
+                {s.zk ? <b class="zk" aria-hidden="true">ZK</b> : <span class="ic" aria-hidden="true" style={`--i:url(${url(`img/stack/${s.id}.svg`)})`}></span>}
+                <span class="l">{s.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

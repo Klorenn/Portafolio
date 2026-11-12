@@ -1,0 +1,10 @@
+---
+interface Props { h2: [string, string]; lead: string; sprite?: { src: string; cls: string; w: number; h: number } }
+const { h2, lead, sprite } = Astro.props;
+import { url } from '../data/site';
+---
+<div class="sec-head">
+  <h2 class="display">{h2[0]}<br />{h2[1]}</h2>
+  {sprite && <img class={`mp-inline pix ${sprite.cls}`} src={url(sprite.src)} width={sprite.w} height={sprite.h} alt="" loading="lazy" />}
+  <p>{lead}</p>
+</div>

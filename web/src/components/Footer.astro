@@ -1,0 +1,42 @@
+---
+import type { Copy } from '../i18n/types';
+import { LINKS, url } from '../data/site';
+import Icon from './Icon.astro';
+interface Props { copy: Copy }
+const { copy } = Astro.props;
+const f = copy.footer;
+const cards = [
+  { icon: 'mail', href: LINKS.email, ext: false },
+  { icon: 'linkedin', href: LINKS.linkedin, ext: true },
+  { icon: 'github', href: LINKS.github, ext: true },
+  { icon: 'x', href: LINKS.x, ext: true },
+] as const;
+---
+<footer class="gft" id="contact" aria-labelledby="contact-t">
+  <div class="wrap">
+    <div class="g-top">
+      <h2 class="g-lead" id="contact-t">{f.lead} <span>{f.leadAccent}</span></h2>
+      <div class="g-cta">
+        <a class="btn btn-lime" href={LINKS.email}>{f.cta} <span class="arrow"><Icon name="arrow" /></span></a>
+      </div>
+    </div>
+    <ul class="g-info">
+      {f.contactCards.map((c, i) => (
+        <li>
+          <a class="ci" href={cards[i].href} {...(cards[i].ext ? { target: '_blank', rel: 'noopener' } : {})}>
+            <span class="cic"><Icon name={cards[i].icon} /></span>
+            <div><div class="k mono">{c.k}</div><div class="v">{c.v}</div></div>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="g-bar">
+      <span class="g-av"><i></i>{f.available}</span>
+      <span>{f.copy}</span>
+    </div>
+  </div>
+  <div class="g-bottom">
+    <div class="mp-zz"><img src={url('img/anim/mp-sleep.gif')} width="156" height="192" alt={f.sleepAlt} loading="lazy" /></div>
+    <div class="g-giant" aria-hidden="true">KL<span>0</span>REN</div>
+  </div>
+</footer>

@@ -1,0 +1,91 @@
+---
+import type { Copy } from '../i18n/types';
+import articles from '../data/articles.json';
+import { ARCHIVE, url } from '../data/site';
+import Base from '../layouts/Base.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import SectionHead from './SectionHead.astro';
+
+interface Props { copy: Copy }
+const { copy } = Astro.props;
+const a = copy.articles;
+const total = articles.length;
+const years = [...new Set(articles.map((x) => x.date.slice(0, 4)))].sort().reverse();
+const since = years[years.length - 1];
+const fill = (t: string) => t.replace('{n}', String(total)).replace('{y}', since);
+const fmtDate = (iso: string) => {
+  const [y, m, d] = iso.split('-').map(Number);
+  const mon = a.months[m - 1];
+  return a.dateFmt === 'dmy' ? `${d} ${mon} ${y}` : `${mon} ${d}, ${y}`;
+};
+const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const path = ARCHIVE[copy.lang];
+const alt = { es: url(ARCHIVE.es), en: url(ARCHIVE.en) };
+const pageCopy = { ...copy, meta: { ...copy.meta, title: a.meta.title, description: fill(a.meta.description) } };
+const typeValues = ['', 'nota', 'boletin'];
+---
+<Base copy={pageCopy} path={path} alt={alt}>
+  <Nav copy={copy} home={false} archive langHrefs={alt} />
+  <main id="main" class="arch">
+    <section class="sec wrap" aria-labelledby="arch-t">
+      <div class="sr-only" id="arch-t">{a.h2.join(' ')}</div>
+      <SectionHead h2={a.h2} lead={fill(a.lead)} />
+      {a.note && <p class="anote mono">{a.note}</p>}
+
+      <div class="afilters" id="afilters"
+        data-count={a.count} data-page-of={a.pageOf} data-prev={a.prev} data-next={a.next} data-page-label={a.page}>
+        <div class="arow">
+          <div class="atabs" role="group" aria-label={a.filterType} data-group="type">
+            {a.types.map((label, i) => <button type="button" data-value={typeValues[i]} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>)}
+          </div>
+          <div class="atabs" role="group" aria-label={a.filterYear} data-group="year">
+            <button type="button" data-value="" aria-pressed="true">{a.allYears}</button>
+            {years.map((y) => <button type="button" data-value={y} aria-pressed="false">{y}</button>)}
+          </div>
+          <label class="asearch">
+            <span class="sr-only">{a.searchLabel}</span>
+            <input id="aq" type="search" autocomplete="off" spellcheck="false" placeholder={a.searchPlaceholder} />
+          </label>
+        </div>
+      </div>
+
+      <div class="ameta" id="alist-top" aria-live="polite">
+        <span class="acount mono">{a.count.replace('{n}', String(total))}</span>
+        <span class="apage-info mono">{a.pageOf.replace('{p}', '1').replace('{t}', String(Math.ceil(total / 12)))}</span>
+      </div>
+
+      <div class="agrid" id="agrid">
+        {articles.map((x) => {
+          const k = x.kind as 'nota' | 'boletin';
+          return (
+            <article class="acard px-box" data-kind={x.kind} data-year={x.date.slice(0, 4)} data-s={norm(x.title)}>
+              <div class="media">
+                <img src={x.img} width="1200" height="630" alt="" loading="lazy" decoding="async" />
+                <span class="fmt mono">{a.kinds[k]}</span>
+              </div>
+              <div class="body">
+                <div class="meta mono"><time datetime={x.date}>{fmtDate(x.date)}</time></div>
+                <h3 lang="es">{x.title}</h3>
+                {x.desc && <p class="desc" lang="es">{x.desc}</p>}
+                <a class="btn-text" href={x.url} target="_blank" rel="noopener">{a.cta[k]} <span class="ar" aria-hidden="true">→</span><span class="sr-only"> — {x.title}</span></a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <div class="aempty" hidden>
+        <p>{a.empty}</p>
+        <button type="button" class="btn btn-lime" data-reset>{a.emptyReset}</button>
+      </div>
+
+      <nav class="apager" id="apager" aria-label={a.pagerLabel} hidden></nav>
+    </section>
+  </main>
+  <Footer copy={copy} />
+  <script>
+    import { initArchive } from '../scripts/articles';
+    initArchive();
+  </script>
+</Base>

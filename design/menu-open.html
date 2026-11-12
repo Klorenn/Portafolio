@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Menú abierto</title><style>
+  :root{--bg:#141414;--surface:#1C1C1C;--line:#2E2E2E;--text:#F5F5F0;--muted:#A3A3A3;--lime:#E8F542;--lav:#A78BFA}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1440px;height:900px;overflow:hidden;background:var(--lime);color:var(--bg);font-family:"Space Grotesk",sans-serif;position:relative}
+  .mono{font-family:"Space Mono",monospace}
+  .display{font-family:"Dela Gothic One",sans-serif;text-transform:uppercase;letter-spacing:-1px}
+  nav{height:88px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--bg)}
+  .logo{display:flex;align-items:center;gap:10px;font-size:22px}
+  .logo .mark{width:28px;height:28px;background:var(--bg);transform:rotate(12deg)}
+  .nav-r{display:flex;align-items:center;gap:14px}
+  .lang{display:flex;padding:4px;border:2px solid var(--bg);border-radius:999px;font-size:13px}
+  .lang span{padding:7px 12px;border-radius:999px}
+  .lang span.on{background:var(--bg);color:var(--lime);font-weight:700}
+  .close{width:52px;height:52px;border-radius:16px;background:var(--bg);display:flex;align-items:center;justify-content:center}
+  .wrap{display:grid;grid-template-columns:1fr 380px;gap:64px;padding:40px 48px 0}
+  ol{list-style:none;display:flex;flex-direction:column}
+  li{display:flex;align-items:baseline;gap:24px;padding:12px 0;border-bottom:2px solid var(--bg)}
+  li .n{font-size:16px;width:40px}
+  li .t{font-size:60px;line-height:1}
+  li.on .t{color:var(--lav)}
+  aside{display:flex;flex-direction:column;gap:20px;padding-top:12px}
+  aside .k{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.7}
+  aside .v{font-size:20px;font-weight:700}
+  .cta{margin-top:12px;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 10px 0 24px;border-radius:999px;background:var(--bg);color:var(--lime);font-weight:700;font-size:17px;align-self:flex-start}
+  .cta span{width:34px;height:34px;border-radius:99px;background:var(--lime);display:flex;align-items:center;justify-content:center}
+  .lbl{position:absolute;left:48px;bottom:24px;font-size:12px;opacity:.6}
+</style></head><body>
+<nav>
+  <div class="logo display">KL0REN</div>
+  <div class="nav-r">
+    <div class="lang mono"><span class="on">ES</span><span>EN</span></div>
+    <div class="close" aria-label="Cerrar menú"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 3l14 14M17 3L3 17" stroke="#E8F542" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+  </div>
+</nav>
+<div class="wrap">
+  <ol>
+    <li class="on"><span class="n mono">01</span><span class="t display">Inicio</span></li>
+    <li><span class="n mono">02</span><span class="t display">Sobre mí</span></li>
+    <li><span class="n mono">03</span><span class="t display">Mis trabajos</span></li>
+    <li><span class="n mono">04</span><span class="t display">Proyecto destacado</span></li>
+    <li><span class="n mono">05</span><span class="t display">Contacto</span></li>
+  </ol>
+  <aside>
+    <div><div class="k mono">Correo</div><div class="v">tu-correo@pendiente.cl</div></div>
+    <div><div class="k mono">Red profesional</div><div class="v">linkedin.com/in/kloren</div></div>
+    <div><div class="k mono">Idioma</div><div class="v">Español · English</div></div>
+    <a class="cta">Conversemos <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  </aside>
+</div>
+<span class="lbl mono">Estado · menú hamburguesa abierto</span>
+</body></html>

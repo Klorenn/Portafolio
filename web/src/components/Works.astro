@@ -1,0 +1,43 @@
+---
+import type { Copy } from '../i18n/types';
+import { ARCHIVE, LINKS, WORKS, url } from '../data/site';
+import articles from '../data/articles.json';
+import SectionHead from './SectionHead.astro';
+interface Props { copy: Copy }
+const { copy } = Astro.props;
+const w = copy.works;
+---
+<section class="sec wrap" id="work" aria-labelledby="works-t">
+  <div class="sr-only" id="works-t">{copy.nav.work}</div>
+  <SectionHead h2={w.h2} lead={w.lead} sprite={{ src: 'img/anim/mp-mic.gif', cls: 'mp-mic', w: 252, h: 300 }} />
+  <div class="works">
+    {WORKS.map((item, i) => {
+      const t = w.items[item.id];
+      const href = item.url ?? LINKS.blogAuthor; // TODO: per-article URLs (see src/data/site.ts)
+      return (
+        <article class={`work px-box ${item.wide ? 'wide' : ''}`}>
+          <div class="media">
+            <img src={url(item.img)} width={item.w} height={item.h} alt={t.alt} loading="lazy" />
+            <span class="fmt mono">{t.fmt}</span>
+            {item.featured && <span class="star mono">{w.featuredBadge}</span>}
+          </div>
+          <div class="body">
+            <div class="meta mono"><span>{t.meta}</span><span>{t.date}</span></div>
+            <h3>{t.title}</h3>
+            <p class="desc">{t.desc}</p>
+            <span class="part mono">{t.part}</span>
+            <a class="btn-text" href={href} target="_blank" rel="noopener" data-work={item.id} data-todo={item.url ? undefined : ''}>{t.cta} <span class="ar" aria-hidden="true">→</span><span class="sr-only"> — {t.title}</span></a>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+  <div class="more">
+    <a class="btn btn-lime" href={url(ARCHIVE[copy.lang])}>{w.more}</a>
+    <span class="mono">{w.moreNote.replace('{n}', String(articles.length))}</span>
+  </div>
+  <div class="editorial">
+    <div class="l"><b>15</b><span>{w.newsletters}</span></div>
+    <div class="chips">{w.chips.map((c) => <span class="chip">{c}</span>)}</div>
+  </div>
+</section>

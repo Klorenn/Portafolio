@@ -1,0 +1,61 @@
+---
+import type { Copy } from '../i18n/types';
+import { TAPES, TAPE_URLS, url } from '../data/site';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+interface Props { copy: Copy }
+const { copy } = Astro.props;
+const v = copy.vhs;
+const filters = ['all', 'hackathons', 'products', 'brands'] as const;
+const first = TAPES.find((t) => t.id === 'tirly') ?? TAPES[0];
+const tirlyIdx = TAPES.indexOf(first);
+---
+<section class="sec wrap" id="collection" aria-labelledby="vhs-t">
+  <div class="sr-only" id="vhs-t">{v.h2.join(' ')}</div>
+  <SectionHead h2={v.h2} lead={v.lead} />
+  <div class="vhs" data-vhs data-start={first.id} role="region" aria-label={v.shelfLabel}>
+    <div class="vtabs" role="group" aria-label={v.tabsLabel}>
+      {filters.map((f, i) => <button type="button" data-filter={f} aria-pressed={i === 0 ? 'true' : 'false'}>{v.tabs[i]}</button>)}
+    </div>
+    <div class="vstage">
+      <div class="vrow">
+        {TAPES.map((t) => {
+          const it = v.items[t.id];
+          const active = t.id === first.id;
+          const style = `--b:${t.bg};--c:${t.fg};--a:${t.artBg}`;
+          const line = it.line ?? `${t.tag} · ${t.year}`;
+          return (
+            <button type="button" class={`vitem ${active ? 'is-active' : ''}`} data-id={t.id} data-cats={t.cats.join(' ')} data-title={t.title} data-sub={it.sub} data-year={t.year} data-url={TAPE_URLS[t.id] ?? undefined} style={style} aria-label={t.title} aria-pressed={active ? 'true' : 'false'}>
+              <span class={`sp ${t.compact ? 'compact' : ''}`} aria-hidden="true">
+                <span class="top" style="border-color:currentColor"><b>{t.n}</b><span>{t.tag}</span></span>
+                <span class="t">{t.title}</span>
+                <span class="bot"><span>{t.year}</span><span class="vtag">VHS</span></span>
+              </span>
+              <span class="case" aria-hidden="true">
+                <span class="ck">{v.kicker} · {t.n}</span>
+                <span class="ct">{t.title}</span>
+                <span class="ci">
+                  <img class={t.id === 'tirly' ? 'fill' : 'big'} src={url(t.art)} width={t.id === 'tirly' ? 600 : 96} height={t.id === 'tirly' ? 600 : 96} alt={t.id === 'tirly' ? v.tirlyAlt : ''} />
+                </span>
+                <span class="cf"><span>{line}</span><span class="cb">VHS</span></span>
+                <span class="play"><Icon name="play" /></span>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      <div class="plank"></div>
+      <img class="vmp pix" src={url('img/anim/mp-idle.gif')} width="108" height="150" alt="" loading="lazy" />
+    </div>
+    <div class="vcap">
+      <button type="button" class="va va-prev" aria-label={v.prev}><Icon name="left" /></button>
+      <div class="vc" aria-live="polite"><b>{first.title}</b><span>{v.items[first.id].sub}</span><i>{first.year}</i><a class="vlink" href={TAPE_URLS[first.id] ?? undefined} hidden={!TAPE_URLS[first.id]} target="_blank" rel="noopener">{v.open} ↗</a></div>
+      <button type="button" class="va va-next" aria-label={v.next}><Icon name="right" /></button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initVhs } from '../scripts/vhs';
+  document.querySelectorAll<HTMLElement>('[data-vhs]').forEach(initVhs);
+</script>

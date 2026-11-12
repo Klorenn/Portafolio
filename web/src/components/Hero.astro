@@ -1,0 +1,43 @@
+---
+import type { Copy } from '../i18n/types';
+import { url } from '../data/site';
+interface Props { copy: Copy }
+const { copy } = Astro.props;
+const [l1, l2] = copy.hero.first.split('|');
+const mq = copy.marquee;
+const loop = [...mq, mq[0]];
+---
+<section id="home" aria-labelledby="hero-title">
+  <div class="wrap hero">
+    <h1 class="display" id="hero-title">{l1}<br />{l2} <span class="acc">{copy.hero.accent}</span></h1>
+    <p class="phrase">{copy.hero.phrase}</p>
+    <p class="welcome">{copy.hero.welcome}</p>
+    <div class="ctas">
+      <a class="btn btn-lime" href="#work">{copy.hero.cta1}</a>
+      <a class="btn btn-secondary" href="#about">{copy.hero.cta2}</a>
+    </div>
+  </div>
+  <div class="wrap stage-wrap">
+    <div class="stage">
+      <img class="px-burst" src={url('img/sprites/px-burst.png')} width="1312" height="600" alt="" />
+      <img class="px-burst-m" src={url('img/sprites/px-burst-m.png')} width="720" height="600" alt="" />
+      <img class="hero-px" src={url('img/mini-pau-hola-hero.gif')} width="480" height="200" alt={copy.hero.alt} />
+      <div class="bubble mono" aria-hidden="true">{copy.hero.bubble}<i></i></div>
+    </div>
+  </div>
+  <div class="mq-wrap" aria-hidden="true">
+    <div class="marquee display">
+      {[0, 1].map(() => (
+        <div class="mq-track">
+          {loop.map((w) => (<><span>{w}</span><span class="sep">+</span></>))}
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="kpis" role="list">
+      <span class="hud-t mono">{copy.kpisTitle}</span>
+      {copy.kpis.map((k) => <div role="listitem"><b>{k.n}</b><span>{k.label}</span></div>)}
+    </div>
+  </div>
+</section>

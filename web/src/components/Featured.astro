@@ -1,0 +1,59 @@
+---
+import type { Copy } from '../i18n/types';
+import { LINKS, REBRANDS, url } from '../data/site';
+import SectionHead from './SectionHead.astro';
+interface Props { copy: Copy }
+const { copy } = Astro.props;
+const f = copy.feat;
+const rb = copy.rebrands;
+---
+<section class="sec wrap" id="featured" aria-labelledby="feat-t">
+  <div class="sr-only" id="feat-t">{copy.nav.featured}</div>
+  <SectionHead h2={f.h2} lead={f.lead} sprite={{ src: 'img/anim/mp-chest.gif', cls: 'mp-chest', w: 216, h: 312 }} />
+  <div class="feat">
+    <div class="feat-top">
+      <div class="l">
+        <span class="mono kick">{f.kicker}</span>
+        <h3 class="display">{f.title}</h3>
+        <p>{f.desc}</p>
+        <div class="chips">{f.chips.map((c) => <span class="chip f">{c}</span>)}</div>
+        <a class="btn btn-lime" href={LINKS.loot} target="_blank" rel="noopener" aria-label={f.ctaAria}>{f.cta}</a>
+      </div>
+      <div class="r"><img src={url('img/covers/loot.jpg')} width="1040" height="840" alt={f.imgAlt} loading="lazy" /></div>
+    </div>
+    <ol class="qs">
+      {f.qs.map((q, i) => (<li class="q"><span class="n">{String(i + 1).padStart(2, '0')}</span><h4>{q.h}</h4><p>{q.p}</p></li>))}
+    </ol>
+  </div>
+  <div class="also">
+    <div class="img"><img src={url('img/covers/tirly.jpg')} width="1380" height="840" alt={f.tirly.imgAlt} loading="lazy" /></div>
+    <div class="txt">
+      <h3 class="display">{f.tirly.title}</h3>
+      <p>{f.tirly.desc}</p>
+      <div class="chips">{f.tirly.chips.map((c) => <span class="chip">{c}</span>)}</div>
+      <a class="btn btn-secondary" href={LINKS.tirly} target="_blank" rel="noopener">{f.tirly.cta}</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="brands" aria-labelledby="rb-t">
+  <div class="sr-only" id="rb-t">{rb.h2.join(' ')}</div>
+  <SectionHead h2={rb.h2} lead={rb.lead} sprite={{ src: 'img/anim/mp-pencil.gif', cls: 'mp-pencil', w: 264, h: 300 }} />
+  <div class="rebrands">
+    {REBRANDS.map((r) => {
+      const t = rb.items[r.id];
+      return (
+        <article class="rb px-box">
+          <div class="shot"><img src={url(r.img)} width="1600" height="1000" alt={t.alt} loading="lazy" /></div>
+          <div class="rb-b">
+            <div class="meta mono"><span>{r.id === 'local402' ? 'Local402' : r.id[0].toUpperCase() + r.id.slice(1)}</span></div>
+            <h3>{t.title}</h3>
+            <p class="desc">{t.desc}</p>
+            <span class="part mono">{t.part}</span>
+            {r.url && <a class="btn-text" href={r.url} target="_blank" rel="noopener">{t.meta2} <span class="ar" aria-hidden="true">→</span><span class="sr-only"> — {t.title}</span></a>}
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>

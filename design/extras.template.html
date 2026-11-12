@@ -1,0 +1,153 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Extras</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1520px;background:#0b0b0b;font-family:"Space Grotesk",sans-serif;color:#F5F5F0;padding:40px}
+.px{font-family:"Pixelify Sans",sans-serif;font-weight:700} .sk{font-family:"Silkscreen",monospace} .j10{font-family:"Jersey 10",sans-serif}
+.frame{position:relative;overflow:hidden;background:#141414;margin-bottom:60px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 20px;background:#E8F542;color:#141414;font-family:"Silkscreen",monospace;font-size:13px;text-transform:uppercase;box-shadow:0 -3px 0 0 #E8F542,0 3px 0 0 #E8F542,-3px 0 0 0 #E8F542,3px 0 0 0 #E8F542,6px 6px 0 0 #000}
+.gs{width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;background:#1C1C1C;box-shadow:0 -3px 0 0 #1C1C1C,0 3px 0 0 #1C1C1C,-3px 0 0 0 #1C1C1C,3px 0 0 0 #1C1C1C}
+.mtop{height:88px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid #2E2E2E}
+.logo{font-size:26px}
+.nr{display:flex;gap:14px;align-items:center}
+.lang{display:flex;gap:8px;font-size:12px;color:#5A5A5A} .lang span{padding:0} .lang .on{color:#F5F5F0}
+.lg-ic{width:32px;height:32px;image-rendering:pixelated;display:block}
+.logo{display:flex;align-items:center;gap:12px}
+.menu-m .lg-ic{width:28px;height:28px}
+.close{width:46px;height:46px;background:#E8F542;color:#141414;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 -3px 0 0 #E8F542,0 3px 0 0 #E8F542,-3px 0 0 0 #E8F542,3px 0 0 0 #E8F542}
+.menu-d{width:1440px;height:900px}
+.mwrap{display:grid;grid-template-columns:1fr 400px;gap:64px;padding:40px 48px 0}
+.mlist{list-style:none}
+.mlist li{display:flex;align-items:center;gap:22px;padding:16px 0;border-bottom:3px dashed #2E2E2E;font-size:64px;line-height:1}
+.mlist .n{font-size:14px;color:#A3A3A3;width:36px;font-family:"Silkscreen",monospace;font-weight:400}
+.mlist li.on{color:#E8F542} .mlist li.on .n{color:#E8F542}
+.cur{font-family:"Silkscreen",monospace;font-size:28px;font-weight:400;color:#E8F542;width:22px}
+.maside{display:flex;flex-direction:column;gap:24px;padding-top:16px}
+.maside .k{font-size:11px;color:#E8F542}
+.maside .v{font-size:20px;font-weight:700;margin-top:6px}
+.soc{display:flex;gap:12px}
+.msp{position:absolute;right:72px;bottom:0;width:216px;image-rendering:pixelated}
+.menu-m{width:390px;height:844px}
+.menu-m .mtop{height:68px;padding:0 20px} .menu-m .logo{font-size:20px}
+.menu-m .mlist{padding:20px 20px 0}
+.menu-m .mlist li{font-size:30px;padding:13px 0;gap:12px}
+.menu-m .cur{font-size:18px;width:14px}
+.menu-m .maside{padding:28px 20px 0;gap:18px} .menu-m .maside .v{font-size:16px}
+.menu-m .msp{right:16px;width:96px}
+.og{width:1200px;height:630px}
+.og .band{position:absolute;left:0;right:0}
+.og .t{position:absolute;left:64px;top:64px;font-size:112px;line-height:.92}
+.og .t span{color:#E8F542}
+.og .s{position:absolute;left:64px;top:300px;font-size:26px;max-width:560px;line-height:1.35}
+.og .u{position:absolute;left:64px;bottom:52px;font-size:15px;color:#141414;background:#E8F542;padding:9px 14px;box-shadow:0 -3px 0 0 #E8F542,0 3px 0 0 #E8F542,-3px 0 0 0 #E8F542,3px 0 0 0 #E8F542}
+.og .burst{position:absolute;right:30px;top:50px;width:470px;image-rendering:pixelated}
+.og .sp{position:absolute;right:150px;bottom:0;width:250px;image-rendering:pixelated}
+.e404{width:1440px;height:900px}
+.e404 .mid{position:absolute;left:0;right:0;top:150px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.e404 .sp{width:180px;image-rendering:pixelated}
+.e404 .zz{position:absolute;left:820px;top:150px;font-size:22px;color:#A78BFA}
+.e404 .code{font-size:200px;line-height:.9;color:#E8F542;margin-top:6px}
+.e404 h2{font-size:42px;margin-top:8px}
+.e404 p{font-size:18px;color:#A3A3A3;margin-top:14px;max-width:520px;line-height:1.5}
+.e404 .btn{margin-top:30px}
+.fl{position:absolute;image-rendering:pixelated}
+.scene{display:flex;align-items:flex-end;gap:18px}
+.scene img{image-rendering:pixelated;display:block}
+
+.og2{width:1200px;height:630px;background:#141414}
+.og2 .grid{position:absolute;inset:0;background-image:linear-gradient(#1C1C1C 2px,transparent 2px),linear-gradient(90deg,#1C1C1C 2px,transparent 2px);background-size:48px 48px}
+.og2 .tag{position:absolute;left:64px;top:64px;font-size:14px;color:#141414;background:#E8F542;padding:8px 12px;box-shadow:0 -3px 0 0 #E8F542,0 3px 0 0 #E8F542,-3px 0 0 0 #E8F542,3px 0 0 0 #E8F542}
+.og2 .t{position:absolute;left:60px;top:118px;font-size:120px;line-height:.9}
+.og2 .t span{color:#E8F542;display:block}
+.og2 .s{position:absolute;left:64px;top:356px;width:520px;font-size:28px;line-height:1.3;color:#F5F5F0}
+.og2 .s b{color:#A78BFA;font-weight:700}
+.og2 .tools{position:absolute;left:64px;bottom:60px;display:flex;gap:14px;align-items:center}
+.og2 .tools .ic{width:64px;height:64px;background:#1C1C1C;display:flex;align-items:center;justify-content:center;box-shadow:0 -4px 0 0 #1C1C1C,0 4px 0 0 #1C1C1C,-4px 0 0 0 #1C1C1C,4px 0 0 0 #1C1C1C}
+.og2 .tools img{image-rendering:pixelated;max-width:46px;max-height:46px}
+.og2 .url{font-family:"Silkscreen",monospace;font-size:14px;color:#A3A3A3;margin-left:10px}
+.og2 .card{position:absolute;right:64px;top:52px;width:420px;height:578px;background:#A78BFA;box-shadow:0 -12px 0 0 #A78BFA,0 12px 0 0 #A78BFA,-12px 0 0 0 #A78BFA,12px 0 0 0 #A78BFA}
+.og2 .card .st{position:absolute;left:0;right:0;height:22px}
+.og2 .pau{position:absolute;right:104px;bottom:0;width:340px;image-rendering:pixelated}
+.og2 .bub{position:absolute;right:300px;top:110px;background:#F5F5F0;color:#141414;font-family:"Silkscreen",monospace;font-size:17px;padding:14px 16px;box-shadow:0 -4px 0 0 #F5F5F0,0 4px 0 0 #F5F5F0,-4px 0 0 0 #F5F5F0,4px 0 0 0 #F5F5F0,8px 8px 0 4px #141414}
+.og2 .bub i{position:absolute;right:-4px;bottom:-16px;width:16px;height:16px;background:#F5F5F0}
+.og2 .sp{position:absolute;image-rendering:pixelated}
+
+.e404 .band{position:absolute;left:0;right:0}
+.sheet{width:1440px;padding:64px}
+.sheet h1{font-size:72px;line-height:1}
+.sheet .sub{color:#A3A3A3;font-size:17px;margin-top:12px}
+.sheet h3{font-size:13px;color:#E8F542;margin:52px 0 18px;font-family:"Silkscreen",monospace;font-weight:400;border-bottom:3px dashed #2E2E2E;padding-bottom:10px}
+.row{display:flex;gap:24px;align-items:flex-end;flex-wrap:wrap}
+.cell{display:flex;flex-direction:column;align-items:center;gap:10px;font-family:"Silkscreen",monospace;font-size:11px;color:#A3A3A3}
+.cell .b{padding:18px;background:#1C1C1C;display:flex;align-items:flex-end;justify-content:center}
+.cell img{image-rendering:pixelated;display:block}
+.sw{width:200px;height:120px;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-family:"Silkscreen",monospace;font-size:11px;gap:4px}
+.ty>div{display:flex;align-items:baseline;gap:24px;padding:14px 0;border-bottom:3px dashed #2E2E2E}
+.ty .l{width:240px;font-family:"Silkscreen",monospace;font-size:11px;color:#A3A3A3}
+.tab{display:flex;align-items:center;gap:10px;background:#1C1C1C;padding:10px 14px;font-size:14px;width:300px}
+</style></head><body>
+<div class="frame menu-d" id="menu-d"><div class="mtop"><span class="logo px"><img class="lg-ic" src="{{f-48}}" alt="">KL0REN</span><div class="nr"><div class="lang sk"><span class="on">ES</span><span>/</span><span>EN</span></div><span class="close sk">X</span></div></div><div class="mwrap"><ol class="mlist"><li class="px"><span class="n">01</span>Inicio</li><li class="px on"><span class="n">02</span><span class="cur">&gt;</span>Sobre mí</li><li class="px"><span class="n">03</span>Mis trabajos</li><li class="px"><span class="n">04</span>Proyecto destacado</li><li class="px"><span class="n">05</span>Contacto</li></ol><div class="maside"><div class="soc"><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5h18v14H3z" stroke="#F5F5F0" stroke-width="2.2"/><path d="M3 6l9 7 9-7" stroke="#F5F5F0" stroke-width="2.2"/></svg></span><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="#F5F5F0"/></svg></span><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#F5F5F0"/></svg></span><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#F5F5F0"/></svg></span></div><div><a class="btn">Contáctame para colaborar</a></div></div></div><img class="msp" src="{{n-mp-point-l}}" alt="" style="width:270px;right:56px"><img class="fl" src="{{n-o-gamepad}}" style="right:380px;bottom:36px;width:132px"><img class="fl" src="{{n-o-coffee}}" style="right:540px;bottom:36px;width:84px"><img class="fl" src="{{n-o-heart}}" style="right:120px;bottom:300px;width:56px"></div>
+<div class="frame menu-m" id="menu-m"><div class="mtop"><span class="logo px"><img class="lg-ic" src="{{f-48}}" alt="">KL0REN</span><div class="nr"><div class="lang sk"><span class="on">ES</span><span>/</span><span>EN</span></div><span class="close sk">X</span></div></div><ol class="mlist"><li class="px"><span class="n">01</span>Inicio</li><li class="px on"><span class="n">02</span><span class="cur">&gt;</span>Sobre mí</li><li class="px"><span class="n">03</span>Mis trabajos</li><li class="px"><span class="n">04</span>Proyecto destacado</li><li class="px"><span class="n">05</span>Contacto</li></ol><div class="maside"><div class="soc"><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5h18v14H3z" stroke="#F5F5F0" stroke-width="2.2"/><path d="M3 6l9 7 9-7" stroke="#F5F5F0" stroke-width="2.2"/></svg></span><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="#F5F5F0"/></svg></span><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#F5F5F0"/></svg></span><span class="gs"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#F5F5F0"/></svg></span></div><div><a class="btn">Contáctame para colaborar</a></div></div><img class="msp" src="{{n-mp-camera}}" alt="" style="width:100px"><img class="fl" src="{{n-o-heart}}" style="right:132px;bottom:24px;width:40px"></div>
+<div class="frame og2" id="og">
+  <div class="grid"></div>
+  <span class="tag sk">Portfolio · 2026</span>
+  <div class="t px">PAU KOH<span>KL0REN</span></div>
+  <p class="s">Journalist, community manager &amp; dev.<br><b>I make tech easy to understand.</b></p>
+  <div class="tools">
+    <span class="ic"><img src="{{n-o-news}}"></span><span class="ic"><img src="{{n-o-camera}}"></span><span class="ic"><img src="{{n-o-laptop}}"></span><span class="ic"><img src="{{n-o-gamepad}}"></span>
+    <span class="url">kl0ren · Temuco, CL</span>
+  </div>
+  <div class="card">
+    <div class="st" style="bottom:88px;background:#8E6FF0"></div><div class="st" style="bottom:66px;background:#7656E0"></div><div class="st" style="bottom:44px;background:#5E3FC8"></div><div class="st" style="bottom:22px;background:#4A2FA8"></div><div class="st" style="bottom:0;background:#36207E"></div>
+  </div>
+  <img class="sp" src="{{s-spark}}" style="right:420px;top:72px;width:48px">
+  <img class="sp" src="{{s-spark}}" style="right:96px;top:300px;width:36px">
+  <img class="pau" src="{{n-mp-coffee}}">
+  <div class="bub">Coffee first,<br>then stories.<i></i></div>
+</div>
+<div class="frame e404" id="e404"><div class="mtop"><span class="logo px"><img class="lg-ic" src="{{f-48}}" alt="">KL0REN</span><div class="nr"><div class="lang sk"><span class="on">ES</span><span>/</span><span>EN</span></div><span class="close sk">≡</span></div></div><div class="band" style="top:780px;height:25px;background:#1b1630"></div><div class="band" style="top:804px;height:25px;background:#2a2160"></div><div class="band" style="top:828px;height:25px;background:#3a2e78"></div><div class="band" style="top:852px;height:25px;background:#5a47b8"></div><div class="band" style="top:876px;height:25px;background:#A78BFA"></div>
+  <div class="mid"><div class="scene"><img src="{{n-o-tv}}" style="width:210px"><img src="{{n-mp-gamer}}" style="width:130px"></div><div class="code px">404</div>
+  <h2 class="px">Se perdió la señal</h2>
+  <p>El link que seguiste no existe o cambió de lugar. Vuelve al inicio y sigue explorando.</p>
+  <a class="btn">Volver al inicio</a></div>
+  <img class="fl" src="{{n-o-qblock}}" style="left:250px;top:250px;width:96px"><img class="fl" src="{{n-o-qblock}}" style="right:260px;top:430px;width:68px"><img class="fl" src="{{n-o-vhs}}" style="right:200px;top:190px;width:120px">
+</div>
+<div class="frame sheet" id="sheet">
+  <h1 class="px">KL0REN · Sistema</h1>
+  <p class="sub">Assets, paleta y tipografía del portafolio en pixel art.</p>
+  <h3>Favicon · mini-Pau</h3>
+  <div class="row">
+    <div class="cell"><div class="b"><img src="{{f-512}}" style="width:160px"></div>512</div>
+    <div class="cell"><div class="b"><img src="{{f-180}}" style="width:90px"></div>180 · apple</div>
+    <div class="cell"><div class="b"><img src="{{f-48}}" style="width:48px"></div>48</div>
+    <div class="cell"><div class="b"><img src="{{f-32}}" style="width:32px"></div>32</div>
+    <div class="cell"><div class="b"><img src="{{f-16}}" style="width:16px"></div>16</div>
+    <div class="cell"><div class="tab"><img src="{{f-32}}" style="width:16px">Pau Koh · Portafolio</div>pestaña</div>
+  </div>
+  <h3>Mini-Pau · poses</h3>
+  <div class="row"><div class="cell"><div class="b" style="height:190px"><img src="{{s-wave}}" style="height:150px"></div>wave</div><div class="cell"><div class="b" style="height:190px"><img src="{{s-peek}}" style="height:150px"></div>peek</div><div class="cell"><div class="b" style="height:190px"><img src="{{s-idle}}" style="height:150px"></div>idle</div><div class="cell"><div class="b" style="height:190px"><img src="{{s-mic}}" style="height:150px"></div>mic</div><div class="cell"><div class="b" style="height:190px"><img src="{{s-chest}}" style="height:150px"></div>chest</div><div class="cell"><div class="b" style="height:190px"><img src="{{s-pencil}}" style="height:150px"></div>pencil</div><div class="cell"><div class="b" style="height:190px"><img src="{{s-sleep}}" style="height:150px"></div>sleep</div><div class="cell"><div class="b" style="height:190px"><img src="{{n-mp-point}}" style="height:150px"></div>point</div><div class="cell"><div class="b" style="height:190px"><img src="{{n-mp-camera}}" style="height:150px"></div>camera</div><div class="cell"><div class="b" style="height:190px"><img src="{{n-mp-gamer}}" style="height:150px"></div>gamer</div></div>
+  <h3>Objetos</h3>
+  <div class="row"><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-camera}}" style="max-width:110px;max-height:110px"></div>camera</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-news}}" style="max-width:110px;max-height:110px"></div>news</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-laptop}}" style="max-width:110px;max-height:110px"></div>laptop</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-gamepad}}" style="max-width:110px;max-height:110px"></div>gamepad</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-vhs}}" style="max-width:110px;max-height:110px"></div>vhs</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-tv}}" style="max-width:110px;max-height:110px"></div>tv</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-coffee}}" style="max-width:110px;max-height:110px"></div>coffee</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-mail}}" style="max-width:110px;max-height:110px"></div>mail</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-medal}}" style="max-width:110px;max-height:110px"></div>medal</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-plane}}" style="max-width:110px;max-height:110px"></div>plane</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-pin}}" style="max-width:110px;max-height:110px"></div>pin</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-heart}}" style="max-width:110px;max-height:110px"></div>heart</div><div class="cell"><div class="b" style="height:150px;width:150px;align-items:center"><img src="{{n-o-qblock}}" style="max-width:110px;max-height:110px"></div>qblock</div></div>
+  <h3>Arte</h3>
+  <div class="row">
+    <div class="cell"><div class="b"><img src="{{s-burst-m}}" style="height:220px"></div>estrella pixel</div>
+    <div class="cell"><div class="b"><img src="{{v-tirlycat}}" style="height:220px"></div>Tirly · VHS</div>
+  </div>
+  <h3>Paleta</h3>
+  <div class="row">
+    <div class="sw" style="background:#141414;box-shadow:inset 0 0 0 3px #2E2E2E"><span>Fondo</span>#141414</div>
+    <div class="sw" style="background:#1C1C1C"><span>Superficie</span>#1C1C1C</div>
+    <div class="sw" style="background:#E8F542;color:#141414"><span>Lima</span>#E8F542</div>
+    <div class="sw" style="background:#A78BFA;color:#141414"><span>Lavanda</span>#A78BFA</div>
+    <div class="sw" style="background:#FF5A1F;color:#141414"><span>Naranja</span>#FF5A1F</div>
+    <div class="sw" style="background:#F5F5F0;color:#141414"><span>Texto</span>#F5F5F0</div>
+  </div>
+  <h3>Tipografía</h3>
+  <div class="ty">
+    <div><span class="l">Títulos</span><span class="px" style="font-size:52px">Pixelify Sans</span></div>
+    <div><span class="l">Etiquetas y botones</span><span class="sk" style="font-size:24px">Silkscreen</span></div>
+    <div><span class="l">Lomos VHS</span><span class="j10" style="font-size:46px">Jersey 10</span></div>
+    <div><span class="l">Lectura</span><span style="font-size:24px">Space Grotesk · textos largos</span></div>
+  </div>
+  <h3>Botones</h3>
+  <div class="row"><a class="btn">Conoce mis proyectos</a><a class="btn" style="background:#F5F5F0;box-shadow:0 -3px 0 0 #F5F5F0,0 3px 0 0 #F5F5F0,-3px 0 0 0 #F5F5F0,3px 0 0 0 #F5F5F0,6px 6px 0 0 #000">Sobre mí</a></div>
+</div>
+</body></html>

@@ -1,0 +1,25 @@
+---
+import type { Copy } from '../i18n/types';
+import Base from '../layouts/Base.astro';
+import Nav from './Nav.astro';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import Works from './Works.astro';
+import Featured from './Featured.astro';
+import Vhs from './Vhs.astro';
+import Footer from './Footer.astro';
+interface Props { copy: Copy; path: string }
+const { copy, path } = Astro.props;
+---
+<Base copy={copy} path={path}>
+  <Nav copy={copy} />
+  <main id="main">
+    <Hero copy={copy} />
+    <About copy={copy} />
+    <Works copy={copy} />
+    <Featured copy={copy} />
+    <Vhs copy={copy} />
+  </main>
+  <Footer copy={copy} />
+  <button type="button" class="to-top" aria-label={copy.nav.top} hidden><svg viewBox="0 0 8 8" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M3 0h2v1h1v1h1v1h1v1H6V3H5v5H3V3H2v1H0V3h1V2h1V1h1z" fill="currentColor"/></svg></button>
+</Base>
